@@ -1,22 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SearchComponent } from './search.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { BookComponent } from './book.component';
-import { BookRoutingModule } from './book-routing.module';
-import { SearchModule } from '../components/search/search.module';
 
 
 @NgModule({
   declarations: [
-    BookComponent
+    SearchComponent
   ],
   imports: [
     CommonModule,
     MatFormFieldModule,
-    MatInputModule,
-    SearchModule,
-    BookRoutingModule
-  ]
+    MatInputModule
+  ],
+  exports: [SearchComponent]
 })
-export class BookModule { }
+export class SearchModule { }

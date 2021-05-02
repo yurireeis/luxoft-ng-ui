@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AlbumComponent } from './album.component';
 import { AlbumRoutingModule } from './album-routing.module';
-
+import { SearchModule } from '../components/search/search.module';
 
 
 @NgModule({
@@ -11,6 +11,7 @@ import { AlbumRoutingModule } from './album-routing.module';
   ],
   imports: [
     CommonModule,
+    SearchModule,
     AlbumRoutingModule
   ]
 })

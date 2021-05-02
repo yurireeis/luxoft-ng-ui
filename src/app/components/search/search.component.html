@@ -1,0 +1,9 @@
+<div style="padding: 0 10px;">
+    <mat-form-field appearance="outline" style="width: 100%;">
+        <mat-label>{{ label }}</mat-label>
+        <input matInput [placeholder]="placeholder" (keydown)="keyPressed($event, searchField.value)" #searchField>
+        <mat-icon matSuffix>
+            <img src="assets/icons/search_black_24dp.svg">
+        </mat-icon>
+    </mat-form-field>
+</div>

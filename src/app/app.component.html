@@ -1,1 +1,28 @@
-<router-outlet></router-outlet>
+<mat-grid-list cols="2" rowHeight="2:1" style="height: 90%;">
+    <router-outlet></router-outlet>
+</mat-grid-list>
+<mat-grid-list cols="1" style="height: 10%;">
+    <mat-tab-group mat-stretch-tabs (selectedTabChange)="tabClick($event);">
+        <mat-tab routerLink="/welcome">
+            <ng-template mat-tab-label>
+                <img src="assets/icons/home_black_24dp.svg">
+                <span style="text-transform: uppercase; padding-left: 10px;">
+                </span>
+            </ng-template>
+        </mat-tab>
+        <mat-tab routerLink="/albums">
+            <ng-template mat-tab-label>
+                <img src="assets/icons/headphones_black_24dp.svg">
+                <span style="text-transform: uppercase; padding-left: 10px;">
+                </span>
+            </ng-template>
+        </mat-tab>
+        <mat-tab routerLink="/books">
+            <ng-template mat-tab-label>
+                <img src="assets/icons/menu_book_black_24dp.svg">
+                <span style="text-transform: uppercase; padding-left: 10px;">
+                </span>
+            </ng-template>
+        </mat-tab>
+    </mat-tab-group>
+</mat-grid-list>
