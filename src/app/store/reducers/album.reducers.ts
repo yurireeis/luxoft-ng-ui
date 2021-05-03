@@ -3,24 +3,25 @@ import {
     EntityAdapter,
     createEntityAdapter
 } from '@ngrx/entity';
-import { Album } from 'src/app/album/models/album';
+import { Result } from 'src/app/models/result';
 import {
     AlbumActions,
     AlbumActionTypes
 } from '../actions/album.actions';
 
 
-export interface AlbumState extends EntityState<Album> {
+export interface AlbumState extends EntityState<Result> {
     lastUpdate: Date;
+    term: string;
 }
 
-// TODO: add new albums ID (new API)
-export const albumsAdapter: EntityAdapter<Album> = createEntityAdapter<Album>({
-    selectId: album => album.resultCount.toString()
+export const albumsAdapter: EntityAdapter<Result> = createEntityAdapter<Result>({
+    selectId: album => album.id
 });
 
 export const initialAlbumsState: AlbumState = albumsAdapter.getInitialState({
-    lastUpdate: new Date()
+    lastUpdate: new Date(),
+    term: ''
 });
 
 export function albumsReducer(
@@ -29,11 +30,12 @@ export function albumsReducer(
 ): AlbumState {
     switch (action.type) {
         case AlbumActionTypes.LoadAlbums:
-            return albumsAdapter.addMany(
+            return albumsAdapter.setAll(
                 action.payload.albums,
                 {
                     ...state,
-                    lastUpdate: new Date()
+                    lastUpdate: new Date(),
+                    term: action.payload.term
                 }
             );
         default:

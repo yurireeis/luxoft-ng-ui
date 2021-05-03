@@ -1,0 +1,10 @@
+version: '3.1'
+
+services:
+
+  luxoft-test-ui:
+    container_name: luxoft-test-ui
+    build: .
+    ports:
+      - "8080:8080"
+    mem_limit: 1024m

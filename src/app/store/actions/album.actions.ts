@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Album } from 'src/app/album/models/album';
+import { Result } from 'src/app/models/result';
 
 
 export enum AlbumActionTypes {
@@ -14,7 +14,7 @@ export class RequestAlbumsAction implements Action {
 
 export class LoadAlbumsAction implements Action {
     readonly type = AlbumActionTypes.LoadAlbums;
-    constructor(public payload: { albums: Album[] }) { }
+    constructor(public payload: { albums: Result[], term: string }) { }
 }
 
 export type AlbumActions = |

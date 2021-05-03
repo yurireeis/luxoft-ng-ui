@@ -12,7 +12,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    loadChildren: () => import('./welcome/welcome.module').then(m => m.WelcomeModule)
+    redirectTo: '/albums'
   }
 ];
 

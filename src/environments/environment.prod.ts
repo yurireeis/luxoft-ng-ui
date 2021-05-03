@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  searchApiUrl: 'http://localhost:8000'
 };

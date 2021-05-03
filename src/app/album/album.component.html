@@ -1,4 +1,11 @@
-<div style="text-align: center;padding-top: 10px;">
+<mat-list class="content" style="text-align: center;padding-top: 10px;height: 10%;">
     <h4 style="text-transform: uppercase;font-weight: 800;color: rgb(151, 111, 151);padding: 10px 0;">Albums Searching</h4>
-</div>
-<app-search [placeholder]="placeholder" (searchEvent)="lookForAlbum($event);"></app-search>
+    <app-search [placeholder]="placeholder" (searchEvent)="lookForAlbums($event);"></app-search>
+    <mat-list-item *ngFor="let album of albums$ | async">
+        <h3 matLine><span style="text-transform: uppercase;font-weight: 800;font-size: 14;">{{album.type || 'name'}}:</span> {{album.title || 'no title'}} </h3>
+        <p matLine>
+          <span></span>
+        </p>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+</mat-list>

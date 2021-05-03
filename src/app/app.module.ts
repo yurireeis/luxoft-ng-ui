@@ -14,6 +14,7 @@ import { BookEffects } from './store/effects/book.effects';
 import { AlbumEffects } from './store/effects/album.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
+import { MatBadgeModule } from '@angular/material/badge';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { environment } from 'src/environments/environment';
     MatTabsModule,
     MatGridListModule,
     AppRoutingModule,
+    MatBadgeModule,
     StoreModule.forRoot(appReducers, {}),
     StoreDevtoolsModule.instrument({
       maxAge: 25,

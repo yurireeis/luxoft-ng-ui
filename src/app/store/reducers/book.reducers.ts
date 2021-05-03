@@ -3,24 +3,25 @@ import {
     EntityAdapter,
     createEntityAdapter
 } from '@ngrx/entity';
-import { Book } from 'src/app/book/models/book';
+import { Result } from 'src/app/models/result';
 import {
     BookActions,
     BookActionTypes
 } from '../actions/book.actions';
 
 
-export interface BookState extends EntityState<Book> {
+export interface BookState extends EntityState<Result> {
     lastUpdate: Date;
+    term: string;
 }
 
-// TODO: add new books ID (new API)
-export const booksAdapter: EntityAdapter<Book> = createEntityAdapter<Book>({
-    selectId: book => book.kind
+export const booksAdapter: EntityAdapter<Result> = createEntityAdapter<Result>({
+    selectId: book => book.id
 });
 
 export const initialBooksState: BookState = booksAdapter.getInitialState({
-    lastUpdate: new Date()
+    lastUpdate: new Date(),
+    term: ''
 });
 
 export function booksReducer(
@@ -29,11 +30,12 @@ export function booksReducer(
 ): BookState {
     switch (action.type) {
         case BookActionTypes.LoadBooks:
-            return booksAdapter.addMany(
+            return booksAdapter.setAll(
                 action.payload.books,
                 {
                     ...state,
-                    lastUpdate: new Date()
+                    lastUpdate: new Date(),
+                    term: action.payload.term
                 }
             );
         default:

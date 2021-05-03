@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatListModule } from '@angular/material/list'
 import { AlbumComponent } from './album.component';
 import { AlbumRoutingModule } from './album-routing.module';
 import { SearchModule } from '../components/search/search.module';
@@ -12,6 +13,7 @@ import { SearchModule } from '../components/search/search.module';
   imports: [
     CommonModule,
     SearchModule,
+    MatListModule,
     AlbumRoutingModule
   ]
 })
