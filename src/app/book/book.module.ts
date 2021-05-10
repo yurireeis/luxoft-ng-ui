@@ -5,6 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list'
 import { BookComponent } from './book.component';
 import { BookRoutingModule } from './book-routing.module';
+import { EmptyResultModule } from '../components/empty-result/empty-result.module';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { BookRoutingModule } from './book-routing.module';
     MatFormFieldModule,
     MatInputModule,
     MatListModule,
-    BookRoutingModule
+    BookRoutingModule,
+    EmptyResultModule
   ]
 })
 export class BookModule { }

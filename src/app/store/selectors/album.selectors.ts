@@ -8,9 +8,9 @@ import { AlbumState } from '../reducers/album.reducers';
 
 export const albumsState = createFeatureSelector<AlbumState>('albums');
 
-export const lastAlbumSearchedTerm = createSelector(
+export const albumIsLoading = createSelector(
     albumsState,
-    (state) => state && state.term
+    (state) => state && state.loading
 );
 
 export const allAlbums = createSelector(
@@ -21,4 +21,9 @@ export const allAlbums = createSelector(
 export const albumsQuantity = createSelector(
     allAlbums,
     (albums) => albums && albums.length
+);
+
+export const hasAlbums = createSelector(
+    albumsState,
+    (albums): boolean => Boolean(albums.ids.length)
 );

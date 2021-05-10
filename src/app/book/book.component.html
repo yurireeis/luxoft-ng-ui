@@ -1,12 +1,15 @@
-<mat-list class="content" style="text-align: center;padding-top: 10px;height: 10%;">
-    <mat-list-item *ngFor="let book of books$ | async">
-        <span style="font-size: 14px;text-transform: uppercase;" matLine><span style="text-transform: uppercase;font-weight: 800;color: darkcyan;">Book:</span> {{book.title || 'no title'}} </span>
-        <p matLine>
-          <span style="font-size: 12px;font-weight: 800;color: darkcyan; text-transform: uppercase;">Authors:</span>
-          <span style="font-size: 12px;text-transform: uppercase;" *ngFor="let author of book.authors;last as isLast">
-             <span></span> {{ author }}<span>{{ !isLast ? "," : "." }}</span>
-          </span>
-        </p>
-        <mat-divider></mat-divider>
-      </mat-list-item>
+<mat-list class="content" style="text-align: center;padding-top: 10px;height: 10%;" *ngIf="( hasBooks$ | async );else emptyState">
+  <mat-list-item *ngFor="let book of books$ | async">
+    <span style="font-size: 14px;text-transform: uppercase;" matLine><span style="text-transform: uppercase;font-weight: 800;color: darkcyan;">Book:</span> {{book.title || 'no title'}} </span>
+    <p matLine>
+      <span style="font-size: 12px;font-weight: 800;color: darkcyan; text-transform: uppercase;">Authors:</span>
+      <span style="font-size: 12px;text-transform: uppercase;" *ngFor="let author of book.authors;last as isLast">
+          <span></span> {{ author }}<span>{{ !isLast ? "," : "." }}</span>
+      </span>
+    </p>
+    <mat-divider></mat-divider>
+  </mat-list-item>
 </mat-list>
+<ng-template #emptyState>
+  <app-empty-result [feedbackMessage]="feedbackMessage"></app-empty-result>
+</ng-template>

@@ -1,4 +1,4 @@
-<mat-list class="content" style="text-align: center;padding-top: 10px;height: 10%;">
+<mat-list class="content" style="text-align: center;padding-top: 10px;height: 10%;" *ngIf="( hasAlbums$ | async );else emptyState">
   <mat-list-item *ngFor="let album of albums$ | async">
     <span style="font-size: 14px;text-transform: uppercase;" matLine><span style="text-transform: uppercase;font-weight: 800;color: darkcyan;">Album:</span> {{album.title || 'no title'}} </span>
     <p matLine>
@@ -9,4 +9,8 @@
     </p>
     <mat-divider></mat-divider>
   </mat-list-item>
+  <mat-list-item #emptyState></mat-list-item>
 </mat-list>
+<ng-template #emptyState>
+    <app-empty-result [feedbackMessage]="feedbackMessage"></app-empty-result>
+</ng-template>

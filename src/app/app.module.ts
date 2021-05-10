@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatGridListModule } from '@angular/material/grid-list';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { FormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import {HttpClientModule} from '@angular/common/http';
@@ -29,6 +30,7 @@ import { SearchModule } from './components/search/search.module';
     FormsModule,
     MatTabsModule,
     MatGridListModule,
+    MatProgressSpinnerModule,
     AppRoutingModule,
     MatBadgeModule,
     SearchModule,

@@ -2,8 +2,11 @@
     <h4 style="text-transform: uppercase;font-weight: 800;color: rgb(151, 111, 151);padding: 10px 0;text-align: center;">Albums / Books Searching</h4>
     <app-search [placeholder]="placeholder" (searchEvent)="lookForAlbumsOrBooks($event);"></app-search>
 </mat-grid-list>
-<mat-grid-list id="content" cols="2" rowHeight="2:1" style="height: 70%;">
-    <router-outlet></router-outlet>
+<mat-grid-list id="content" cols="2" rowHeight="1:1" style="height: 70%;">
+    <mat-spinner style="margin:0 auto;" *ngIf="( bookIsLoading$ && albumIsLoading$ | async ); else content"></mat-spinner>
+    <ng-template #content>
+        <router-outlet ></router-outlet>
+    </ng-template>
 </mat-grid-list>
 <mat-grid-list id="footer" cols="1" style="height: 10%;background-color: black;">
     <mat-tab-group mat-stretch-tabs (selectedTabChange)="tabClick($event);">

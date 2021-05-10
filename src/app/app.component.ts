@@ -8,8 +8,8 @@ import { Result } from './models/result';
 import { RequestAlbumsAction } from './store/actions/album.actions';
 import { RequestBooksAction } from './store/actions/book.actions';
 import { AppState } from './store/reducers/app.reducers';
-import { albumsQuantity, allAlbums } from './store/selectors/album.selectors';
-import { booksQuantity } from './store/selectors/books.selectors';
+import { albumIsLoading, albumsQuantity, allAlbums } from './store/selectors/album.selectors';
+import { bookIsLoading, booksQuantity } from './store/selectors/books.selectors';
 
 @Component({
   selector: 'app-root',
@@ -18,16 +18,17 @@ import { booksQuantity } from './store/selectors/books.selectors';
 })
 export class AppComponent {
   title = 'luxoft-test-ui';
+  placeholder = 'type some text and press enter to search';
   booksQuantity$: Observable<number> = this.store$.select(booksQuantity);
   albumsQuantity$: Observable<number> = this.store$.select(albumsQuantity);
+  bookIsLoading$: Observable<boolean> = this.store$.select(bookIsLoading);
+  albumIsLoading$: Observable<boolean> = this.store$.select(albumIsLoading);
 
   constructor(
     private router: Router,
     private store$: Store<AppState>
   ) { }
 
-  placeholder = 'type some text and press enter to search';
-  albums$: Observable<Result[]> = this.store$.select(allAlbums);
 
   lookForAlbumsOrBooks(text: any) {
     this.store$.dispatch(new RequestAlbumsAction({ text }));

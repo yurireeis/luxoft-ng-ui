@@ -5,6 +5,7 @@ import { AlbumComponent } from './album.component';
 import { AlbumRoutingModule } from './album-routing.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { EmptyResultModule } from '../components/empty-result/empty-result.module';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { MatInputModule } from '@angular/material/input';
     MatFormFieldModule,
     MatInputModule,
     MatListModule,
-    AlbumRoutingModule
+    AlbumRoutingModule,
+    EmptyResultModule
   ]
 })
 export class AlbumModule { }

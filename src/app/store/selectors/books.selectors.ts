@@ -8,9 +8,9 @@ import { BookState } from '../reducers/book.reducers';
 
 export const booksState = createFeatureSelector<BookState>('books');
 
-export const lastBookSearchedTerm = createSelector(
+export const bookIsLoading = createSelector(
     booksState,
-    (state) => state && state.term
+    (state) => state && state.loading
 );
 
 export const allBooks = createSelector(
@@ -21,4 +21,9 @@ export const allBooks = createSelector(
 export const booksQuantity = createSelector(
     allBooks,
     (books) => books && books.length
+);
+
+export const hasBooks = createSelector(
+    booksState,
+    (books): boolean => Boolean(books.ids.length)
 );

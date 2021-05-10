@@ -12,7 +12,7 @@ import {
 
 export interface BookState extends EntityState<Result> {
     lastUpdate: Date;
-    term: string;
+    loading: boolean;
 }
 
 export const booksAdapter: EntityAdapter<Result> = createEntityAdapter<Result>({
@@ -21,7 +21,7 @@ export const booksAdapter: EntityAdapter<Result> = createEntityAdapter<Result>({
 
 export const initialBooksState: BookState = booksAdapter.getInitialState({
     lastUpdate: new Date(),
-    term: ''
+    loading: false
 });
 
 export function booksReducer(
@@ -34,10 +34,11 @@ export function booksReducer(
                 action.payload.books,
                 {
                     ...state,
-                    lastUpdate: new Date(),
-                    term: action.payload.term
+                    lastUpdate: new Date()
                 }
             );
+        case BookActionTypes.BookIsLoading:
+            return Object.assign({}, state, { loading: action.payload.isLoading });
         default:
             return state;
     }

@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Result } from '../models/result';
 import { AppState } from '../store/reducers/app.reducers';
-import { allAlbums } from '../store/selectors/album.selectors';
+import { allAlbums, hasAlbums } from '../store/selectors/album.selectors';
 
 
 @Component({
@@ -13,5 +13,7 @@ import { allAlbums } from '../store/selectors/album.selectors';
 })
 export class AlbumComponent {
   albums$: Observable<Result[]> = this.store$.select(allAlbums);
+  hasAlbums$: Observable<boolean> = this.store$.select(hasAlbums);
+  feedbackMessage = "no albums found";
   constructor(private store$: Store<AppState>) { }
 }

@@ -12,7 +12,7 @@ import {
 
 export interface AlbumState extends EntityState<Result> {
     lastUpdate: Date;
-    term: string;
+    loading: false
 }
 
 export const albumsAdapter: EntityAdapter<Result> = createEntityAdapter<Result>({
@@ -21,7 +21,7 @@ export const albumsAdapter: EntityAdapter<Result> = createEntityAdapter<Result>(
 
 export const initialAlbumsState: AlbumState = albumsAdapter.getInitialState({
     lastUpdate: new Date(),
-    term: ''
+    loading: false
 });
 
 export function albumsReducer(
@@ -34,10 +34,11 @@ export function albumsReducer(
                 action.payload.albums,
                 {
                     ...state,
-                    lastUpdate: new Date(),
-                    term: action.payload.term
+                    lastUpdate: new Date()
                 }
             );
+        case AlbumActionTypes.AlbumIsLoading:
+            return Object.assign({}, state, { loading: action.payload.isLoading });
         default:
             return state;
     }
