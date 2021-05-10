@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  searchApiUrl: 'http://localhost:8000'
+  searchApiUrl: 'https://luxoft-python-api.herokuapp.com'
 };
