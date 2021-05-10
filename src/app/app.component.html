@@ -1,15 +1,12 @@
-<mat-grid-list cols="2" rowHeight="2:1" style="height: 90%;">
+<mat-grid-list id="header" cols="1" rowHeight="2:1" style="height: 20%;">
+    <h4 style="text-transform: uppercase;font-weight: 800;color: rgb(151, 111, 151);padding: 10px 0;text-align: center;">Albums / Books Searching</h4>
+    <app-search [placeholder]="placeholder" (searchEvent)="lookForAlbumsOrBooks($event);"></app-search>
+</mat-grid-list>
+<mat-grid-list id="content" cols="2" rowHeight="2:1" style="height: 70%;">
     <router-outlet></router-outlet>
 </mat-grid-list>
-<mat-grid-list cols="1" style="height: 10%;">
+<mat-grid-list id="footer" cols="1" style="height: 10%;background-color: black;">
     <mat-tab-group mat-stretch-tabs (selectedTabChange)="tabClick($event);">
-        <!-- <mat-tab routerLink="/welcome">
-            <ng-template mat-tab-label>
-                <img src="assets/icons/home_black_24dp.svg">
-                <span style="text-transform: uppercase; padding-left: 10px;">
-                </span>
-            </ng-template>
-        </mat-tab> -->
         <mat-tab routerLink="/albums">
             <ng-template mat-tab-label>
                 <span [matBadge]="( albumsQuantity$ | async )" [matBadgeHidden]="( albumsQuantity$ | async ) === 0" matBadgePosition="after" matBadgeColor="accent">
@@ -19,7 +16,7 @@
         </mat-tab>
         <mat-tab routerLink="/books">
             <ng-template mat-tab-label>
-                <span [matBadge]="( albumsQuantity$ | async )" [matBadgeHidden]="( albumsQuantity$ | async ) === 0" matBadgePosition="after" matBadgeColor="accent">
+                <span [matBadge]="( booksQuantity$ | async )" [matBadgeHidden]="( booksQuantity$ | async ) === 0" matBadgePosition="after" matBadgeColor="accent">
                     <img src="assets/icons/menu_book_black_24dp.svg">
                 </span>
             </ng-template>

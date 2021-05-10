@@ -15,6 +15,7 @@ import { AlbumEffects } from './store/effects/album.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { MatBadgeModule } from '@angular/material/badge';
+import { SearchModule } from './components/search/search.module';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { MatBadgeModule } from '@angular/material/badge';
     MatGridListModule,
     AppRoutingModule,
     MatBadgeModule,
+    SearchModule,
     StoreModule.forRoot(appReducers, {}),
     StoreDevtoolsModule.instrument({
       maxAge: 25,

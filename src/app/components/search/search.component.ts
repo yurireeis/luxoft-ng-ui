@@ -17,11 +17,13 @@ export class SearchComponent {
   @Input() label = "";
   @Output() searchEvent = new EventEmitter<string>();
 
-  keyPressed(event: KeyboardEvent, text: string) {
+  keyPressed(
+    event: KeyboardEvent,
+    text: string
+  ) {
     switch(event.key) {
       case Keys.ENTER:
-        this.searchEvent.emit(text);
-        break;
+        return this.searchEvent.emit(text);
       default:
         return;
     }

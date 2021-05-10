@@ -5,7 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list'
 import { BookComponent } from './book.component';
 import { BookRoutingModule } from './book-routing.module';
-import { SearchModule } from '../components/search/search.module';
+
 
 @NgModule({
   declarations: [
@@ -15,7 +15,6 @@ import { SearchModule } from '../components/search/search.module';
     CommonModule,
     MatFormFieldModule,
     MatInputModule,
-    SearchModule,
     MatListModule,
     BookRoutingModule
   ]
