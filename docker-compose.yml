@@ -4,6 +4,6 @@ services:
 
   luxoft-test-ui:
     container_name: luxoft-test-ui
-    image: .
+    build: .
     ports:
       - "80:80"
